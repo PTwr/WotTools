@@ -38,6 +38,12 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.moddingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extractFromWoTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.applyColorsFromOldXmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createwotmodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paintGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.historicalDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +56,6 @@
             this.tagsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.seasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listxmlItemGroupPaintBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listxmlItemGroupPaintBindingSource)).BeginInit();
@@ -59,7 +64,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.moddingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1159, 24);
@@ -137,6 +143,41 @@
             this.dataGridView1.Size = new System.Drawing.Size(1159, 709);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.SelectedPath = "c:\\games\\world_of_tanks";
+            this.folderBrowserDialog1.ShowNewFolderButton = false;
+            // 
+            // moddingToolStripMenuItem
+            // 
+            this.moddingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.extractFromWoTToolStripMenuItem,
+            this.applyColorsFromOldXmlToolStripMenuItem,
+            this.createwotmodToolStripMenuItem});
+            this.moddingToolStripMenuItem.Name = "moddingToolStripMenuItem";
+            this.moddingToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.moddingToolStripMenuItem.Text = "Modding";
+            // 
+            // extractFromWoTToolStripMenuItem
+            // 
+            this.extractFromWoTToolStripMenuItem.Name = "extractFromWoTToolStripMenuItem";
+            this.extractFromWoTToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.extractFromWoTToolStripMenuItem.Text = "Extract from WoT";
+            this.extractFromWoTToolStripMenuItem.Click += new System.EventHandler(this.extractFromWoTToolStripMenuItem_Click);
+            // 
+            // applyColorsFromOldXmlToolStripMenuItem
+            // 
+            this.applyColorsFromOldXmlToolStripMenuItem.Name = "applyColorsFromOldXmlToolStripMenuItem";
+            this.applyColorsFromOldXmlToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.applyColorsFromOldXmlToolStripMenuItem.Text = "Apply colors from old xml";
+            this.applyColorsFromOldXmlToolStripMenuItem.Click += new System.EventHandler(this.applyColorsFromOldXmlToolStripMenuItem_Click);
+            // 
+            // createwotmodToolStripMenuItem
+            // 
+            this.createwotmodToolStripMenuItem.Name = "createwotmodToolStripMenuItem";
+            this.createwotmodToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.createwotmodToolStripMenuItem.Text = "Create .wotmod";
             // 
             // paintGroupDataGridViewTextBoxColumn
             // 
@@ -259,6 +300,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tagsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn seasonDataGridViewTextBoxColumn;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ToolStripMenuItem moddingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractFromWoTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem applyColorsFromOldXmlToolStripMenuItem;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.ToolStripMenuItem createwotmodToolStripMenuItem;
     }
 }
 

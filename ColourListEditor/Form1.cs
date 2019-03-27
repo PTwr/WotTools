@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Platform.IO;
+using Platform.VirtualFileSystem;
+using Platform.VirtualFileSystem.Providers.Zip;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,11 +41,16 @@ namespace ColourListEditor
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 var xml = File.ReadAllText(openFileDialog1.FileName);
-                listxml = xmlSerializerHelper.DeserializeFromXml<listxml>(xml);
-
-                BindGrid();
+                LoadXml(xml);
             }
 
+        }
+
+        private void LoadXml(string xml)
+        {
+            listxml = xmlSerializerHelper.DeserializeFromXml<listxml>(xml);
+
+            BindGrid();
         }
 
         private void BindGrid()
@@ -94,7 +103,7 @@ namespace ColourListEditor
         void ColourizeCells()
         {
             var colName = "colorDataGridViewTextBoxColumn";
-            foreach(DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 var cell = row.Cells[colName];
 
@@ -136,11 +145,11 @@ namespace ColourListEditor
             }
             int a, r, g, b;
             if (int.TryParse(parts[0], out r)
-                && 
+                &&
                 int.TryParse(parts[1], out g)
-                && 
+                &&
                 int.TryParse(parts[2], out b)
-                && 
+                &&
                 int.TryParse(parts[3], out a)
                 )
             {
@@ -148,6 +157,60 @@ namespace ColourListEditor
                 return Color.FromArgb(a, r, g, b);
             }
             return Color.White;
+        }
+
+        private void applyColorsFromOldXmlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var xml = File.ReadAllText(openFileDialog1.FileName);
+                var oldXml = xmlSerializerHelper.DeserializeFromXml<listxml>(xml);
+
+                foreach(var oldItemGroup in oldXml.itemGroup)
+                {
+                    var newItemGroup = listxml.itemGroup.FirstOrDefault(i => i.name == oldItemGroup.name);
+                    if(newItemGroup != null)
+                    {
+                        foreach(var oldPaint in oldItemGroup.paint)
+                        {
+                            var newPaint = newItemGroup.paint.FirstOrDefault(i => i.id == oldPaint.id);
+                            if(newPaint != null)
+                            {
+                                newPaint.color = oldPaint.color;
+                            }
+                        }
+                    }
+                }
+
+                BindGrid();
+            }
+        }
+
+        private void extractFromWoTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK && Directory.Exists(folderBrowserDialog1.SelectedPath))
+            {
+                //TODO refactor to lib
+                var scriptsPkgPath = Path.Combine(folderBrowserDialog1.SelectedPath, @"res\packages\scripts.pkg");
+                if (File.Exists(scriptsPkgPath))
+                {
+                    const string listFilename = @"scripts/item_defs/customization/paints/list.xml";
+                    using (var zipFile = System.IO.Compression.ZipFile.Open(scriptsPkgPath, ZipArchiveMode.Read))
+                    {
+                        var x = zipFile.Entries.FirstOrDefault(i => i.FullName == listFilename);
+                        var stream = x.Open();
+
+                        var binaryReader = new BinaryReader(stream);
+                        var head = binaryReader.ReadInt32();
+                        if (head == Packed_Section.Packed_Header)
+                        {
+                            string xml = Ptwr.PackedXml.Reader.DecodePackedFile(binaryReader, Path.GetFileName(listFilename));
+
+                            LoadXml(xml);
+                        }
+                    }
+                }
+            }
         }
     }
 }
