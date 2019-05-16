@@ -35,15 +35,13 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.moddingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extractFromWoTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.applyColorsFromOldXmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createwotmodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.paintGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.historicalDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +54,11 @@
             this.tagsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.seasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listxmlItemGroupPaintBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
+            this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAllToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listxmlItemGroupPaintBindingSource)).BeginInit();
@@ -65,7 +68,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.moddingToolStripMenuItem});
+            this.moddingToolStripMenuItem,
+            this.colorsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1159, 24);
@@ -85,69 +89,23 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.DefaultExt = "xml";
-            this.openFileDialog1.FileName = "list.xml";
-            this.openFileDialog1.Filter = "Xml|*.xml";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.DefaultExt = "xml";
-            this.saveFileDialog1.FileName = "list.xml";
-            this.saveFileDialog1.Filter = "Xml|*.xml";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.paintGroupDataGridViewTextBoxColumn,
-            this.historicalDataGridViewCheckBoxColumn,
-            this.idDataGridViewTextBoxColumn,
-            this.textureDataGridViewTextBoxColumn,
-            this.colorDataGridViewTextBoxColumn,
-            this.glossDataGridViewTextBoxColumn,
-            this.metallicDataGridViewTextBoxColumn,
-            this.userStringDataGridViewTextBoxColumn,
-            this.vehicleFilterDataGridViewTextBoxColumn,
-            this.tagsDataGridViewTextBoxColumn,
-            this.seasonDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.listxmlItemGroupPaintBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 24);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.Size = new System.Drawing.Size(1159, 709);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // folderBrowserDialog1
-            // 
-            this.folderBrowserDialog1.SelectedPath = "c:\\games\\world_of_tanks";
-            this.folderBrowserDialog1.ShowNewFolderButton = false;
             // 
             // moddingToolStripMenuItem
             // 
@@ -178,6 +136,49 @@
             this.createwotmodToolStripMenuItem.Name = "createwotmodToolStripMenuItem";
             this.createwotmodToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.createwotmodToolStripMenuItem.Text = "Create .wotmod";
+            this.createwotmodToolStripMenuItem.Click += new System.EventHandler(this.createwotmodToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "xml";
+            this.openFileDialog1.FileName = "list.xml";
+            this.openFileDialog1.Filter = "Xml|*.xml";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "xml";
+            this.saveFileDialog1.FileName = "list.xml";
+            this.saveFileDialog1.Filter = "Xml|*.xml";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.paintGroupDataGridViewTextBoxColumn,
+            this.historicalDataGridViewCheckBoxColumn,
+            this.idDataGridViewTextBoxColumn,
+            this.textureDataGridViewTextBoxColumn,
+            this.colorDataGridViewTextBoxColumn,
+            this.glossDataGridViewTextBoxColumn,
+            this.metallicDataGridViewTextBoxColumn,
+            this.userStringDataGridViewTextBoxColumn,
+            this.vehicleFilterDataGridViewTextBoxColumn,
+            this.tagsDataGridViewTextBoxColumn,
+            this.seasonDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.listxmlItemGroupPaintBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 24);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.Size = new System.Drawing.Size(1159, 709);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // paintGroupDataGridViewTextBoxColumn
             // 
@@ -257,6 +258,31 @@
             // 
             this.listxmlItemGroupPaintBindingSource.DataSource = typeof(ColourListEditor.listxmlItemGroupPaint);
             // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.SelectedPath = "c:\\games\\world_of_tanks";
+            this.folderBrowserDialog1.ShowNewFolderButton = false;
+            // 
+            // saveFileDialog2
+            // 
+            this.saveFileDialog2.FileName = "TonnedDownNonHistoricalPaints.wotmod";
+            this.saveFileDialog2.Filter = "wotmod|*.wotmod";
+            // 
+            // colorsToolStripMenuItem
+            // 
+            this.colorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setAllToToolStripMenuItem});
+            this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
+            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.colorsToolStripMenuItem.Text = "Colors";
+            // 
+            // setAllToToolStripMenuItem
+            // 
+            this.setAllToToolStripMenuItem.Name = "setAllToToolStripMenuItem";
+            this.setAllToToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setAllToToolStripMenuItem.Text = "Set all to...";
+            this.setAllToToolStripMenuItem.Click += new System.EventHandler(this.setAllToToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,6 +331,9 @@
         private System.Windows.Forms.ToolStripMenuItem applyColorsFromOldXmlToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ToolStripMenuItem createwotmodToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+        private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setAllToToolStripMenuItem;
     }
 }
 

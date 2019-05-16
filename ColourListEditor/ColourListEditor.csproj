@@ -70,20 +70,8 @@
     <Reference Include="Costura, Version=3.2.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.3.2.2\lib\net40\Costura.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform, Version=1.2.1.276, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.NET.1.2.1.276\lib\net452\Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.VirtualFileSystem, Version=1.2.1.124, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.VirtualFileSystem.1.2.1.124\lib\net452\Platform.VirtualFileSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.VirtualFileSystem.Providers.Zip, Version=1.2.1.124, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.VirtualFileSystem.Providers.Zip.1.2.1.124\lib\net452\Platform.VirtualFileSystem.Providers.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Xml.Serialization, Version=1.2.1.276, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Xml.Serialization.1.2.1.276\lib\net452\Platform.Xml.Serialization.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.1.0.145, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.1.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
