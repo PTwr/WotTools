@@ -29,20 +29,24 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox_GameDirectory = new System.Windows.Forms.TextBox();
             this.button_ChooseGameDirectory = new System.Windows.Forms.Button();
+            this.textBox_GameDirectory = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dialog_ChooseDirectory = new System.Windows.Forms.FolderBrowserDialog();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listBox_Mods = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.listBox_ResMods = new System.Windows.Forms.ListBox();
-            this.button_Save = new System.Windows.Forms.Button();
-            this.button_Run = new System.Windows.Forms.Button();
             this.button_RunInSafeMode = new System.Windows.Forms.Button();
+            this.button_Run = new System.Windows.Forms.Button();
+            this.button_Save = new System.Windows.Forms.Button();
+            this.listBox_ResMods = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox_Mods = new System.Windows.Forms.ListBox();
+            this.replayDropBox = new System.Windows.Forms.GroupBox();
+            this.button_ClearReplay = new System.Windows.Forms.Button();
+            this.label_ReplayFile = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.replayDropBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -56,23 +60,6 @@
             this.panel1.Size = new System.Drawing.Size(800, 36);
             this.panel1.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Game directory:";
-            // 
-            // textBox_GameDirectory
-            // 
-            this.textBox_GameDirectory.Location = new System.Drawing.Point(91, 10);
-            this.textBox_GameDirectory.Name = "textBox_GameDirectory";
-            this.textBox_GameDirectory.Size = new System.Drawing.Size(486, 20);
-            this.textBox_GameDirectory.TabIndex = 1;
-            this.textBox_GameDirectory.Text = "c:\\games\\World_of_Tanks";
-            // 
             // button_ChooseGameDirectory
             // 
             this.button_ChooseGameDirectory.Location = new System.Drawing.Point(583, 7);
@@ -83,8 +70,29 @@
             this.button_ChooseGameDirectory.UseVisualStyleBackColor = true;
             this.button_ChooseGameDirectory.Click += new System.EventHandler(this.button_ChooseGameDirectory_Click);
             // 
+            // textBox_GameDirectory
+            // 
+            this.textBox_GameDirectory.Location = new System.Drawing.Point(91, 10);
+            this.textBox_GameDirectory.Name = "textBox_GameDirectory";
+            this.textBox_GameDirectory.Size = new System.Drawing.Size(486, 20);
+            this.textBox_GameDirectory.TabIndex = 1;
+            this.textBox_GameDirectory.Text = "c:\\games\\World_of_Tanks";
+            this.textBox_GameDirectory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_GameDirectory_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Game directory:";
+            // 
             // panel2
             // 
+            this.panel2.AllowDrop = true;
+            this.panel2.Controls.Add(this.button_ClearReplay);
+            this.panel2.Controls.Add(this.replayDropBox);
             this.panel2.Controls.Add(this.button_RunInSafeMode);
             this.panel2.Controls.Add(this.button_Run);
             this.panel2.Controls.Add(this.button_Save);
@@ -98,49 +106,15 @@
             this.panel2.Size = new System.Drawing.Size(800, 414);
             this.panel2.TabIndex = 1;
             // 
-            // listBox_Mods
+            // button_RunInSafeMode
             // 
-            this.listBox_Mods.FormattingEnabled = true;
-            this.listBox_Mods.Location = new System.Drawing.Point(10, 23);
-            this.listBox_Mods.Name = "listBox_Mods";
-            this.listBox_Mods.Size = new System.Drawing.Size(303, 381);
-            this.listBox_Mods.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = ".wotmod Modsets (./mods)";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(320, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "legacy Modsets (./res_mods)";
-            // 
-            // listBox_ResMods
-            // 
-            this.listBox_ResMods.FormattingEnabled = true;
-            this.listBox_ResMods.Location = new System.Drawing.Point(323, 23);
-            this.listBox_ResMods.Name = "listBox_ResMods";
-            this.listBox_ResMods.Size = new System.Drawing.Size(303, 381);
-            this.listBox_ResMods.TabIndex = 3;
-            // 
-            // button_Save
-            // 
-            this.button_Save.Location = new System.Drawing.Point(632, 23);
-            this.button_Save.Name = "button_Save";
-            this.button_Save.Size = new System.Drawing.Size(156, 23);
-            this.button_Save.TabIndex = 4;
-            this.button_Save.Text = "Modify paths.xml";
-            this.button_Save.UseVisualStyleBackColor = true;
-            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
+            this.button_RunInSafeMode.Location = new System.Drawing.Point(713, 53);
+            this.button_RunInSafeMode.Name = "button_RunInSafeMode";
+            this.button_RunInSafeMode.Size = new System.Drawing.Size(75, 23);
+            this.button_RunInSafeMode.TabIndex = 6;
+            this.button_RunInSafeMode.Text = "in safe mode";
+            this.button_RunInSafeMode.UseVisualStyleBackColor = true;
+            this.button_RunInSafeMode.Click += new System.EventHandler(this.button_RunInSafeMode_Click);
             // 
             // button_Run
             // 
@@ -152,15 +126,83 @@
             this.button_Run.UseVisualStyleBackColor = true;
             this.button_Run.Click += new System.EventHandler(this.button_Run_Click);
             // 
-            // button_RunInSafeMode
+            // button_Save
             // 
-            this.button_RunInSafeMode.Location = new System.Drawing.Point(713, 53);
-            this.button_RunInSafeMode.Name = "button_RunInSafeMode";
-            this.button_RunInSafeMode.Size = new System.Drawing.Size(75, 23);
-            this.button_RunInSafeMode.TabIndex = 6;
-            this.button_RunInSafeMode.Text = "in safe mode";
-            this.button_RunInSafeMode.UseVisualStyleBackColor = true;
-            this.button_RunInSafeMode.Click += new System.EventHandler(this.button_RunInSafeMode_Click);
+            this.button_Save.Location = new System.Drawing.Point(632, 23);
+            this.button_Save.Name = "button_Save";
+            this.button_Save.Size = new System.Drawing.Size(156, 23);
+            this.button_Save.TabIndex = 4;
+            this.button_Save.Text = "Modify paths.xml";
+            this.button_Save.UseVisualStyleBackColor = true;
+            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
+            // 
+            // listBox_ResMods
+            // 
+            this.listBox_ResMods.FormattingEnabled = true;
+            this.listBox_ResMods.Location = new System.Drawing.Point(323, 23);
+            this.listBox_ResMods.Name = "listBox_ResMods";
+            this.listBox_ResMods.Size = new System.Drawing.Size(303, 381);
+            this.listBox_ResMods.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(320, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(143, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "legacy Modsets (./res_mods)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = ".wotmod Modsets (./mods)";
+            // 
+            // listBox_Mods
+            // 
+            this.listBox_Mods.FormattingEnabled = true;
+            this.listBox_Mods.Location = new System.Drawing.Point(10, 23);
+            this.listBox_Mods.Name = "listBox_Mods";
+            this.listBox_Mods.Size = new System.Drawing.Size(303, 381);
+            this.listBox_Mods.TabIndex = 0;
+            // 
+            // replayDropBox
+            // 
+            this.replayDropBox.Controls.Add(this.label_ReplayFile);
+            this.replayDropBox.Location = new System.Drawing.Point(633, 83);
+            this.replayDropBox.Name = "replayDropBox";
+            this.replayDropBox.Size = new System.Drawing.Size(155, 134);
+            this.replayDropBox.TabIndex = 7;
+            this.replayDropBox.TabStop = false;
+            this.replayDropBox.Text = "Drop replay here";
+            this.replayDropBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.replayDropBox_DragDrop);
+            this.replayDropBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.replayDropBox_DragEnter);
+            // 
+            // button_ClearReplay
+            // 
+            this.button_ClearReplay.Location = new System.Drawing.Point(633, 224);
+            this.button_ClearReplay.Name = "button_ClearReplay";
+            this.button_ClearReplay.Size = new System.Drawing.Size(155, 23);
+            this.button_ClearReplay.TabIndex = 8;
+            this.button_ClearReplay.Text = "Clear replay";
+            this.button_ClearReplay.UseVisualStyleBackColor = true;
+            this.button_ClearReplay.Click += new System.EventHandler(this.button_ClearReplay_Click);
+            // 
+            // label_ReplayFile
+            // 
+            this.label_ReplayFile.AllowDrop = true;
+            this.label_ReplayFile.Location = new System.Drawing.Point(6, 16);
+            this.label_ReplayFile.Name = "label_ReplayFile";
+            this.label_ReplayFile.Size = new System.Drawing.Size(143, 115);
+            this.label_ReplayFile.TabIndex = 0;
+            this.label_ReplayFile.Text = "no replay";
+            this.label_ReplayFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_ReplayFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.label_ReplayFile_DragDrop);
+            this.label_ReplayFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.label_ReplayFile_DragEnter);
             // 
             // Form1
             // 
@@ -176,6 +218,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.replayDropBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -195,6 +238,9 @@
         private System.Windows.Forms.Button button_RunInSafeMode;
         private System.Windows.Forms.Button button_Run;
         private System.Windows.Forms.Button button_Save;
+        private System.Windows.Forms.GroupBox replayDropBox;
+        private System.Windows.Forms.Button button_ClearReplay;
+        private System.Windows.Forms.Label label_ReplayFile;
     }
 }
 

@@ -40,6 +40,7 @@ namespace ModsetPicker
             this.Text += " v" + System.Reflection.Assembly.GetEntryAssembly().GetName().Version;
 
             textBox_GameDirectory.Text = Properties.Settings.Default["wot_path"].ToString();
+
             ListModsSets(textBox_GameDirectory.Text);
             GetCurrentDirs(textBox_GameDirectory.Text);
         }
@@ -48,14 +49,17 @@ namespace ModsetPicker
         private string ResModsDirectory = @"res_mods";
         private void ListModsSets(string path)
         {
+            listBox_Mods.Items.Clear();
+            listBox_ResMods.Items.Clear();
+
+            if (!Directory.Exists(textBox_GameDirectory.Text))
+            { return; }
+
             var modsPath = Path.Combine(path, ModsDirectory);
             var resModsPath = Path.Combine(path, ResModsDirectory);
 
             var modsModsets = new DirectoryInfo(modsPath).GetDirectories().Select(i => i.FullName).ToList();
             var resModsModsets = new DirectoryInfo(resModsPath).GetDirectories().Select(i => i.FullName).ToList();
-
-            listBox_Mods.Items.Clear();
-            listBox_ResMods.Items.Clear();
 
             modsModsets.ForEach(i => listBox_Mods.Items.Add(i));
             resModsModsets.ForEach(i => listBox_ResMods.Items.Add(i));
@@ -66,6 +70,9 @@ namespace ModsetPicker
         private string CurrentResModsDir = "";
         private void GetCurrentDirs(string path)
         {
+            if (!Directory.Exists(textBox_GameDirectory.Text))
+            { return; }
+
             PathsXmlModel.root pathsModel = GetPathXmlModel(path);
 
             var dirPaths = pathsModel
@@ -151,6 +158,18 @@ namespace ModsetPicker
 
         private void RunWithArgs(string arguments = "")
         {
+            if (!string.IsNullOrWhiteSpace(replayFile))
+            {
+                if (string.IsNullOrWhiteSpace(arguments))
+                {
+                    arguments = replayFile;
+                }
+                else
+                {
+                    arguments = $"\"{replayFile}\" {arguments}";
+                }
+            }
+
             var wotexe = Path.Combine(textBox_GameDirectory.Text, "WorldOfTanks.exe");
             var process = new Process
             {
@@ -167,6 +186,49 @@ namespace ModsetPicker
         private void button_RunInSafeMode_Click(object sender, EventArgs e)
         {
             RunWithArgs("-safe");
+        }
+
+        private void textBox_GameDirectory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Properties.Settings.Default["wot_path"] = textBox_GameDirectory.Text;
+                Properties.Settings.Default.Save();
+
+                ListModsSets(textBox_GameDirectory.Text);
+                GetCurrentDirs(textBox_GameDirectory.Text);
+            }
+        }
+
+        private void replayDropBox_DragEnter(object sender, DragEventArgs e)
+        {
+        }
+
+        string replayFile = "";
+        private void replayDropBox_DragDrop(object sender, DragEventArgs e)
+        {
+        }
+
+        private void button_ClearReplay_Click(object sender, EventArgs e)
+        {
+            replayFile = "";
+            label_ReplayFile.Text = "no file";
+        }
+
+        private void label_ReplayFile_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            var file = files.First();
+            replayFile = file;
+            label_ReplayFile.Text = replayFile;
+        }
+
+        private void label_ReplayFile_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
         }
     }
 }
