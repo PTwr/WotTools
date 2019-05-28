@@ -156,6 +156,7 @@ namespace ModsetPicker
             {
                 StartInfo =
                 {
+                    WorkingDirectory = textBox_GameDirectory.Text,
                     FileName = wotexe,
                     Arguments = arguments,
                 }
