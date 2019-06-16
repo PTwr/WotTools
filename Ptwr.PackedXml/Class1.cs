@@ -316,19 +316,19 @@ public class Packed_Section
             // String
 
             element.InnerText = readString(reader, lengthInBytes);
-            Console.WriteLine(element.InnerText);
+            //Console.WriteLine(element.InnerText);
         }
         else if (dataDescriptor.type == 0x2)
         {
             // Integer number
             element.InnerText = readNumber(reader, lengthInBytes);
-            Console.WriteLine(element.InnerText);
+            //Console.WriteLine(element.InnerText);
         }
         else if (dataDescriptor.type == 0x3)
         {
             // Floats
             string str = readFloats(reader, lengthInBytes);
-            Console.WriteLine(str);
+            //Console.WriteLine(str);
 
             string[] strData = str.Split(' ');
             if (strData.Length == 12)
@@ -386,7 +386,7 @@ public class Packed_Section
         {
             var elementName = dictionary[elementDescriptor.nameIndex];
 
-            Console.WriteLine(elementName);
+            //Console.WriteLine(elementName);
             
             XmlNode child = xDoc.CreateElement(elementName);
             offset = readData(reader, dictionary, child, xDoc, offset, elementDescriptor.dataDescriptor);
