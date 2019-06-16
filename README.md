@@ -17,3 +17,6 @@ Versioning
 THAT CODE IS HIDEOUS!
   
   Oh yes. It is horrible. Half of it is found in depths of internet, translated from C# translated to Visual Basic translated to C#, and then refactored to make it useable for my needs. Rest is quick and dirty trash code to glue basic GUI together. But it works, more or less.
+
+# Acknowledges
+Pakced xml decoding code based on https://github.com/katzsmile/WoTModTools
