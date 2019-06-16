@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
 // Imports wottools
@@ -217,7 +219,7 @@ public class Packed_Section
             if (i != 0)
                 sb.Append(" ");
             float rFloat = readLittleEndianFloat(reader);
-            sb.Append(rFloat.ToString("0.000000"));
+            sb.Append(rFloat.ToString("0.000000", CultureInfo.InvariantCulture));
         }
         return sb.ToString();
     }
@@ -310,16 +312,23 @@ public class Packed_Section
             // Element                
             readElement(reader, element, xDoc, dictionary);
         else if (dataDescriptor.type == 0x1)
+        {
             // String
 
             element.InnerText = readString(reader, lengthInBytes);
+            Console.WriteLine(element.InnerText);
+        }
         else if (dataDescriptor.type == 0x2)
+        {
             // Integer number
             element.InnerText = readNumber(reader, lengthInBytes);
+            Console.WriteLine(element.InnerText);
+        }
         else if (dataDescriptor.type == 0x3)
         {
             // Floats
             string str = readFloats(reader, lengthInBytes);
+            Console.WriteLine(str);
 
             string[] strData = str.Split(' ');
             if (strData.Length == 12)
@@ -364,26 +373,22 @@ public class Packed_Section
 
     }
 
-    HashSet<int> blerghh = new HashSet<int>();
     public void readElement(BinaryReader reader, XmlNode element, XmlDocument xDoc, List<string> dictionary)
     {
         //pos204
         int childrenNmber = readLittleEndianShort(reader);
         DataDescriptor selfDataDescriptor = readDataDescriptor(reader);
         ElementDescriptor[] children = readElementDescriptors(reader, childrenNmber);
-
-        if(blerghh.Add(selfDataDescriptor.type))
-        {
-            //Debugger.Break();
-            //1 - root - always?
-        }
-
-        //int offset = readData(reader, dictionary, element, xDoc, 0, selfDataDescriptor);
-        int offset = 0;
+        
+        int offset = readData(reader, dictionary, element, xDoc, 0, selfDataDescriptor);
 
         foreach (ElementDescriptor elementDescriptor in children)
         {
-            XmlNode child = xDoc.CreateElement(dictionary[elementDescriptor.nameIndex]);
+            var elementName = dictionary[elementDescriptor.nameIndex];
+
+            Console.WriteLine(elementName);
+            
+            XmlNode child = xDoc.CreateElement(elementName);
             offset = readData(reader, dictionary, child, xDoc, offset, elementDescriptor.dataDescriptor);
             element.AppendChild(child);
         }
