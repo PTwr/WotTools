@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColourListEditor", "ColourL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModsetPicker", "ModsetPicker\ModsetPicker.csproj", "{8099E58A-3E7A-4DD9-A58F-260389B535F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CLI", "CLI", "{911BDBA3-D98D-4499-9FC0-9134DDFF3FBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotToolsCLI", "WotToolsCLI\WotToolsCLI.csproj", "{B91296AD-E83F-4ACC-B381-85DC66897608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotToolsCLI.PaintColors", "WotToolsCLI.PaintColors\WotToolsCLI.PaintColors.csproj", "{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolchain", "Toolchain", "{72545B8C-9222-4EE7-AD71-93CA3FE2376B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +43,23 @@ Global
 		{8099E58A-3E7A-4DD9-A58F-260389B535F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8099E58A-3E7A-4DD9-A58F-260389B535F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8099E58A-3E7A-4DD9-A58F-260389B535F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B91296AD-E83F-4ACC-B381-85DC66897608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B91296AD-E83F-4ACC-B381-85DC66897608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B91296AD-E83F-4ACC-B381-85DC66897608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B91296AD-E83F-4ACC-B381-85DC66897608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{61B1755D-886A-498B-A960-39DBC4BB964A} = {7E1D3C30-FDAC-425A-B65E-02DC75E0D793}
 		{FBAA0500-E49D-4129-814C-DED24D15314B} = {7E1D3C30-FDAC-425A-B65E-02DC75E0D793}
+		{B91296AD-E83F-4ACC-B381-85DC66897608} = {911BDBA3-D98D-4499-9FC0-9134DDFF3FBE}
+		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B} = {911BDBA3-D98D-4499-9FC0-9134DDFF3FBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF6354C-02D1-4C9E-8A96-2F311290098A}

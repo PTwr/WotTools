@@ -256,7 +256,7 @@
             // 
             // listxmlItemGroupPaintBindingSource
             // 
-            this.listxmlItemGroupPaintBindingSource.DataSource = typeof(ColourListEditor.listxmlItemGroupPaint);
+            this.listxmlItemGroupPaintBindingSource.DataSource = typeof(WotTools.XmlModels.listxmlItemGroupPaint);
             // 
             // folderBrowserDialog1
             // 

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using WotTools.XmlModels;
 
 namespace ColourListEditor
 {
@@ -258,34 +259,34 @@ namespace ColourListEditor
                 }
                 return;
                 {
-                    FileStream fsOut = File.Create(saveFileDialog2.FileName);
-                    ZipOutputStream zipStream = new ZipOutputStream(fsOut);
-                    zipStream.SetLevel(0);
+                    //FileStream fsOut = File.Create(saveFileDialog2.FileName);
+                    //ZipOutputStream zipStream = new ZipOutputStream(fsOut);
+                    //zipStream.SetLevel(0);
 
-                    var filename = "res/" + listFilename;
+                    //var filename = "res/" + listFilename;
 
-                    var dirs = filename.Split('/').Reverse().Skip(1).Reverse();
-                    var path = "";
-                    foreach(var dir in dirs)
-                    {
-                        path = path + dir + "/";
-                        var dirEntry = new ZipEntry(path);
-                        zipStream.PutNextEntry(dirEntry);
-                        zipStream.CloseEntry();
-                    }
+                    //var dirs = filename.Split('/').Reverse().Skip(1).Reverse();
+                    //var path = "";
+                    //foreach(var dir in dirs)
+                    //{
+                    //    path = path + dir + "/";
+                    //    var dirEntry = new ZipEntry(path);
+                    //    zipStream.PutNextEntry(dirEntry);
+                    //    zipStream.CloseEntry();
+                    //}
 
-                    FileInfo fi = new FileInfo(filename);
-                    var zipEntry = new ZipEntry(filename);
-                    var xml = SerializeListToXml();
-                    byte[] bytes = Encoding.ASCII.GetBytes(xml);
-                    zipEntry.Size = bytes.Length;
+                    //FileInfo fi = new FileInfo(filename);
+                    //var zipEntry = new ZipEntry(filename);
+                    //var xml = SerializeListToXml();
+                    //byte[] bytes = Encoding.ASCII.GetBytes(xml);
+                    //zipEntry.Size = bytes.Length;
 
-                    zipStream.PutNextEntry(zipEntry);
-                    zipStream.Write(bytes, 0, bytes.Length);
-                    zipStream.CloseEntry();
+                    //zipStream.PutNextEntry(zipEntry);
+                    //zipStream.Write(bytes, 0, bytes.Length);
+                    //zipStream.CloseEntry();
 
-                    zipStream.IsStreamOwner = true; // Makes the Close also Close the underlying stream
-                    zipStream.Close();
+                    //zipStream.IsStreamOwner = true; // Makes the Close also Close the underlying stream
+                    //zipStream.Close();
                 }
                 return;
                 //using (var zipFile = System.IO.Compression.ZipFile.Open(saveFileDialog2.FileName, ZipArchiveMode.Create))
