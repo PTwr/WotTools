@@ -40,48 +40,6 @@ namespace WotTools
                 zip.CommitUpdate();
             }
 
-            //using (ZipFile z = ZipFile.Create(targetPath))
-            {
-                //z.BeginUpdate();
-                //TraverseDirectory(new DirectoryInfo(rootDirectory),
-                //    i =>
-                //    {
-
-                //    },
-                //    i =>
-                //    {
-                //        var relativePath = "res/" + MakeRelativePath(rootDirectory, i.FullName);
-                //        //var zipEntry = new ZipEntry(relativePath);
-                //        z.Add(relativePath, i.FullName, CompressionMethod.Stored);
-                //    });
-                //z.CommitUpdate();
-
-                //foreach (var filePath in filePaths)
-                //{
-                //    z.BeginUpdate();
-
-                //    var filename = "res/" + filePath;
-
-                //    //var dirs = filename.Split('/').Reverse().Skip(1).Reverse();
-                //    //var path = "";
-                //    //foreach (var dir in dirs)
-                //    //{
-                //    //    path = path + dir + "/";
-
-                //    //    z.AddDirectory(path);
-                //    //}
-
-                //    var zipEntry = new ZipEntry(filename);
-
-                //    z.Add(filename, CompressionMethod.Stored);
-                //    //var entry = z.GetEntry("list.xml");
-                //    //entry.CompressionMethod = CompressionMethod.Stored;
-                //    //z.GetEntry(filename).CompressionMethod = CompressionMethod.Stored;
-
-                //    z.CommitUpdate();
-                //}
-            }
-
             return true;
         }
 
