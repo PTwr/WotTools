@@ -12,7 +12,7 @@ namespace WotTools
     public static class WotMod
     {
         public static bool TryCreateWotMod(string targetPath, string rootDirectory)
-        {
+        {            
             using (var zip = ICSharpCode.SharpZipLib.Zip.ZipFile.Create(targetPath))
             {                
                 var root = new DirectoryInfo(rootDirectory);
@@ -20,18 +20,24 @@ namespace WotTools
 
                 zip.BeginUpdate();
 
-                zip.AddDirectory("res");
-                zip.AddDirectory($"res/{root.Name}");
-                
+                //TODO refactor this crap - prefix path param?
+                string prefix = $"{root.Name}";
+                if (root.Name != "res")
+                {
+                    zip.AddDirectory("res");
+                    zip.AddDirectory($"res/{root.Name}");
+                    prefix = $"res/{root.Name}";
+                }                
+
                 TraverseDirectory(root,
                     i =>
                     {
-                        var relativePath = $"res/{root.Name}/{MakeRelativePath(rootDirectory, i.FullName)}";
+                        var relativePath = $"{prefix}/{MakeRelativePath(rootDirectory, i.FullName)}";
                         zip.AddDirectory(relativePath);
                     },
                     i =>
                     {
-                        var relativePath = $"res/{root.Name}/{MakeRelativePath(rootDirectory, i.FullName)}";
+                        var relativePath = $"{prefix}/{MakeRelativePath(rootDirectory, i.FullName)}";
 
                         var dataSource = new ICSharpCode.SharpZipLib.Zip.StaticDiskDataSource(i.FullName);
                         zip.Add(dataSource, relativePath, CompressionMethod.Stored);
