@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotToolsCLI.PaintColors", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolchain", "Toolchain", "{72545B8C-9222-4EE7-AD71-93CA3FE2376B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotTools.Tests", "WotTools.Tests\WotTools.Tests.csproj", "{0F525023-6C01-4B8F-871B-952CC0888376}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F525023-6C01-4B8F-871B-952CC0888376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F525023-6C01-4B8F-871B-952CC0888376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F525023-6C01-4B8F-871B-952CC0888376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F525023-6C01-4B8F-871B-952CC0888376}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{FBAA0500-E49D-4129-814C-DED24D15314B} = {7E1D3C30-FDAC-425A-B65E-02DC75E0D793}
 		{B91296AD-E83F-4ACC-B381-85DC66897608} = {911BDBA3-D98D-4499-9FC0-9134DDFF3FBE}
 		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B} = {911BDBA3-D98D-4499-9FC0-9134DDFF3FBE}
+		{0F525023-6C01-4B8F-871B-952CC0888376} = {7E1D3C30-FDAC-425A-B65E-02DC75E0D793}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF6354C-02D1-4C9E-8A96-2F311290098A}

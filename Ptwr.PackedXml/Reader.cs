@@ -10,7 +10,7 @@ namespace Ptwr.PackedXml
 {
     public class Reader
     {
-        public static string DecodePackedFile(BinaryReader reader, string filename)
+        public static string DecodePackedFile(BinaryReader reader, string rootName)
         {
             XmlDocument xDoc = new XmlDocument();
 
@@ -20,12 +20,7 @@ namespace Ptwr.PackedXml
 
             var dictionary = PS.readDictionary(reader);
 
-            if (Char.IsNumber(filename.First()))
-            {
-                filename = "bad_" + filename;
-            }
-
-            var xmlroot = xDoc.CreateNode(XmlNodeType.Element, filename, "");
+            var xmlroot = xDoc.CreateNode(XmlNodeType.Element, rootName, "");
             //pos202
             PS.readElement(reader, xmlroot, xDoc, dictionary);
             var xml_string = xmlroot.OuterXml;
@@ -97,6 +92,33 @@ namespace Ptwr.PackedXml
             PS.WriteElement(writer, xDoc.FirstChild, xDoc, newDict);
 
             f.Flush();
+            f.Close();
+        }
+        public static void EncodePackedFile(string xml, out byte[] bytes)
+        {
+            var PS = new Packed_Section();
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.LoadXml(xml);
+
+            var f = new MemoryStream();
+            BinaryWriter writer = new BinaryWriter(f);
+
+            //header
+            writer.Write(Packed_Section.Packed_Header);
+            writer.Write((sbyte)0);
+
+            //dictionary
+            var newDict = GetXmlDict(xDoc);
+            PS.writeDictionary(writer, newDict);
+
+            //records
+            PS.WriteElement(writer, xDoc.FirstChild, xDoc, newDict);
+
+            f.Flush();
+
+            bytes = f.ToArray();
+
             f.Close();
         }
     }
