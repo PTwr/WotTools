@@ -97,10 +97,6 @@ namespace WotTools.PackedXml
             var bytes = binaryReader.ReadBytes(length);
             StringBuilder result = new StringBuilder();
 
-            //TODO implement
-            //6 bits per character
-
-            //int triplets = bytes.Length / 3;
             int n;
             for (n = 0; n < bytes.Length; n += 3)
             {
