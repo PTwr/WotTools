@@ -145,7 +145,7 @@ public class Packed_Section
     {
         ElementDescriptor[] elements = new ElementDescriptor[number - 1 + 1];
         for (int i = 0; i <= number - 1; i++)
-        {
+        {            
             int nameIndex = readLittleEndianShort(reader);
             DataDescriptor dataDescriptor = readDataDescriptor(reader);
             elements[i] = new ElementDescriptor(nameIndex, dataDescriptor);
@@ -155,6 +155,10 @@ public class Packed_Section
 
     public string readString(BinaryReader reader, int lengthInBytes)
     {
+        if (lengthInBytes == 0)
+        {
+            //System.Diagnostics.Debugger.Break();
+        }
         string rString = new string(reader.ReadChars(lengthInBytes), 0, lengthInBytes);
 
         return rString;
@@ -364,6 +368,10 @@ public class Packed_Section
         else
             throw new System.ArgumentException("Unknown type of \"" + element.Name + ": " + dataDescriptor.ToString() + " " + readAndToHex(reader, lengthInBytes));
 
+        if (element.Name == "Chassis_M46_Patton")
+        {
+            lengthInBytes = lengthInBytes;
+        }
         return dataDescriptor.end;
     }
 
@@ -378,6 +386,7 @@ public class Packed_Section
         //pos204
         int childrenNmber = readLittleEndianShort(reader);
         DataDescriptor selfDataDescriptor = readDataDescriptor(reader);
+        
         ElementDescriptor[] children = readElementDescriptors(reader, childrenNmber);
         
         int offset = readData(reader, dictionary, element, xDoc, 0, selfDataDescriptor);
