@@ -24,13 +24,23 @@ namespace WotToolsCLI
         public bool Decode { get; set; }
     }
 
-    [Verb("xmldecode", HelpText = "Handless WoT binary encoded xml files")]
+    [Verb("xmldecode", HelpText = "Decodes WoT xml files into readable form")]
     public class XmlDecodeOptions : IOOptions
     {
         [Option(shortName: 'i', longName: "input", HelpText = "Encoded xml file", Required = true)]
         public string Input { get; set; }
 
-        [Option(shortName: 'o', longName: "output", HelpText = "Path to which extracted file will be saved")]
+        [Option(shortName: 'o', longName: "output", HelpText = "Path to which decoded file will be saved")]
+        public string Output { get; set; }
+    }
+
+    [Verb("xmlencode", HelpText = "Encodess readable xml file into WoT packed xml")]
+    public class XmlEncodeOptions : IOOptions
+    {
+        [Option(shortName: 'i', longName: "input", HelpText = "Decoded xml file", Required = true)]
+        public string Input { get; set; }
+
+        [Option(shortName: 'o', longName: "output", HelpText = "Path to which encoded file will be saved")]
         public string Output { get; set; }
     }
 

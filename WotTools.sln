@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotTools", "WotTools\WotTools.csproj", "{61B1755D-886A-498B-A960-39DBC4BB964A}"
 EndProject
@@ -20,8 +20,20 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotToolsCLI.PaintColors", "WotToolsCLI.PaintColors\WotToolsCLI.PaintColors.csproj", "{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Toolchain", "Toolchain", "{72545B8C-9222-4EE7-AD71-93CA3FE2376B}"
+	ProjectSection(SolutionItems) = preProject
+		Toolchain\getversion.ps1 = Toolchain\getversion.ps1
+		Toolchain\install-debug.ps1 = Toolchain\install-debug.ps1
+		Toolchain\install-release.ps1 = Toolchain\install-release.ps1
+		Toolchain\paintmods.ps1 = Toolchain\paintmods.ps1
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotTools.Tests", "WotTools.Tests\WotTools.Tests.csproj", "{0F525023-6C01-4B8F-871B-952CC0888376}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniLauncher", "MiniLauncher\MiniLauncher.csproj", "{0AD8666A-5FD9-41FD-9EA0-05B76D42176F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{F3E46AC4-9CF0-47B1-A41C-5620832174B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplayThumbnail", "ReplayThumbnail\ReplayThumbnail.csproj", "{0B07E370-0B07-4128-B130-A306E8390733}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +69,14 @@ Global
 		{0F525023-6C01-4B8F-871B-952CC0888376}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F525023-6C01-4B8F-871B-952CC0888376}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F525023-6C01-4B8F-871B-952CC0888376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AD8666A-5FD9-41FD-9EA0-05B76D42176F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD8666A-5FD9-41FD-9EA0-05B76D42176F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD8666A-5FD9-41FD-9EA0-05B76D42176F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD8666A-5FD9-41FD-9EA0-05B76D42176F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B07E370-0B07-4128-B130-A306E8390733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B07E370-0B07-4128-B130-A306E8390733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B07E370-0B07-4128-B130-A306E8390733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B07E370-0B07-4128-B130-A306E8390733}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +87,7 @@ Global
 		{B91296AD-E83F-4ACC-B381-85DC66897608} = {911BDBA3-D98D-4499-9FC0-9134DDFF3FBE}
 		{8E3E1880-4AFC-4224-B256-DDDFB20F5D2B} = {911BDBA3-D98D-4499-9FC0-9134DDFF3FBE}
 		{0F525023-6C01-4B8F-871B-952CC0888376} = {7E1D3C30-FDAC-425A-B65E-02DC75E0D793}
+		{0B07E370-0B07-4128-B130-A306E8390733} = {F3E46AC4-9CF0-47B1-A41C-5620832174B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFF6354C-02D1-4C9E-8A96-2F311290098A}

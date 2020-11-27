@@ -43,9 +43,9 @@ namespace WotTools
                 return TryDecodeXml(filepath, fileStream, out decodedXml, verbose, rootName);
             }
         }
-        public static bool TryEncodeXml(string filepath, out string decodedXml, bool verbose = true, string rootName = null)
+        public static bool TryEncodeXml(string filepath, out string encodedXml, bool verbose = true, string rootName = null)
         {
-            decodedXml = "";
+            encodedXml = "";
 
             if (!File.Exists(filepath))
             {
@@ -54,7 +54,7 @@ namespace WotTools
 
             using (var fileStream = File.OpenRead(filepath))
             {
-                return TryDecodeXml(filepath, fileStream, out decodedXml, verbose, rootName);
+                return TryDecodeXml(filepath, fileStream, out encodedXml, verbose, rootName);
             }
         }
     }

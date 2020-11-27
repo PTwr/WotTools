@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ptwr.PackedXml;
@@ -22,21 +23,7 @@ namespace WotTools.Tests
             var expected = File.ReadAllText(decodedFile);
             Assert.AreEqual(expected, actual);
         }
-
-        [TestMethod]
-        public void EncodeTest()
-        {
-            var decoded = File.ReadAllText(decodedFile);
-            Reader.EncodePackedFile(decoded, out var actual);
-            var expected = File.ReadAllBytes(encodedFile);
-            return;
-            Assert.AreEqual(expected.Length, actual.Length);
-            for (int i = 0; i < expected.Length; i++)
-            {
-                Assert.AreEqual(expected[i], actual[i]);
-            }
-        }
-
+        
         [TestMethod]
         public void ReadHeader()
         {

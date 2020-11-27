@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ptwr.PackedXml;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -368,10 +369,6 @@ public class Packed_Section
         else
             throw new System.ArgumentException("Unknown type of \"" + element.Name + ": " + dataDescriptor.ToString() + " " + readAndToHex(reader, lengthInBytes));
 
-        if (element.Name == "Chassis_M46_Patton")
-        {
-            lengthInBytes = lengthInBytes;
-        }
         return dataDescriptor.end;
     }
 
@@ -379,6 +376,7 @@ public class Packed_Section
     {
         WriteLittleEndianShort(writer, (short)element.ChildNodes.Count); //childrenNumber
 
+        //gotta save some schema with element dictionary and corresponding data types during decode process, to avoid incorrect data types on save?
     }
 
     public void readElement(BinaryReader reader, XmlNode element, XmlDocument xDoc, List<string> dictionary)
@@ -398,6 +396,13 @@ public class Packed_Section
             //Console.WriteLine(elementName);
             
             XmlNode child = xDoc.CreateElement(elementName);
+            var nodeType = (ENodeType)elementDescriptor.dataDescriptor.type;
+            if (nodeType != ENodeType.Element)
+            {
+                var attribute = xDoc.CreateAttribute("dataType");
+                attribute.Value = nodeType.ToString();
+                child.Attributes.Append(attribute);
+            }
             offset = readData(reader, dictionary, child, xDoc, offset, elementDescriptor.dataDescriptor);
             element.AppendChild(child);
         }

@@ -34,6 +34,7 @@ namespace Ptwr.PackedXml
             return xml_string;
         }
 
+        public static List<string> floatMatrixRowsNodes = new List<string>() { "row0", "row1", "row2", "row3" };
         public static List<string> GetXmlDict(XmlNode element)
         {
             if (element.NodeType != XmlNodeType.Element)
@@ -51,6 +52,13 @@ namespace Ptwr.PackedXml
             {
                 result.Add(element.Name);
             }
+
+            if (element.ChildNodes.Cast<XmlNode>().Select(i => i.Name).OrderBy(i => i).SequenceEqual(floatMatrixRowsNodes))
+            {
+                //do not process children for transformation matrix
+                return result;
+            }
+
             foreach (XmlNode node in element.ChildNodes)
             {
                 result.AddRange(GetXmlDict(node));
@@ -65,7 +73,7 @@ namespace Ptwr.PackedXml
                 result.AddRange(GetXmlDict(node));
             }
 
-            result = result.Distinct().OrderBy(i => i).ToList();
+            result = result.Distinct().OrderBy(i => i, StringComparer.Ordinal).ToList();
 
             return result;
         }

@@ -9,6 +9,6 @@ $xml = [xml](Get-Content $versionxmlpath)
 
 $versionstring = $xml."version.xml".version
 
-$version = $versionstring -match '\d\.\d\.\d\.\d'
+$version = $versionstring -match '\d+\.\d+\.\d+\.\d+'
 
 echo $matches[0]

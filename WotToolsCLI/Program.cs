@@ -26,15 +26,21 @@ namespace WotToolsCLI
                 //args = new string[] { "--version" };
                 //args = new string[] { "--help", "wotmod" };
                 //args = new string[] { "--help", "extract" };
+                //args = new string[] {
+                //"wotmod",
+                //"--input",@"scripts",
+                //"--output",@"test.wotmod"};
                 args = new string[] {
-                "wotmod",
-                "--input",@"scripts",
-                "--output",@"test.wotmod"};
+                    "extract",
+                    "--input",@"C:\games\World_of_Tanks\res\packages\scripts.pkg",
+                    "--file", @"scripts/item_defs/customization/camouflages/list.xml",
+                    "--decode" };
             }
-            var exitCode = CommandLine.Parser.Default.ParseArguments<ExtractOptions, XmlDecodeOptions, WotModOptions>(args)
+            var exitCode = CommandLine.Parser.Default.ParseArguments<ExtractOptions, XmlDecodeOptions, XmlEncodeOptions, WotModOptions>(args)
                 .MapResult(
                 (ExtractOptions opts) => Extract(opts),
                 (XmlDecodeOptions opts) => XmlDecode(opts),
+                (XmlEncodeOptions opts) => XmlEncode(opts),
                 (WotModOptions opts) => WotMod(opts),
                 errs => 1
             );
@@ -85,6 +91,24 @@ namespace WotToolsCLI
             }
 
             if (WotXml.TryDecodeXml(opts.Input, out var decodedXml))
+            {
+                File.WriteAllText(opts.Output, decodedXml);
+                return 0;
+            }
+            else
+            {
+                throw new Exception("Failed to decode xml");
+            }
+
+        }
+        static int XmlEncode(XmlEncodeOptions opts)
+        {
+            if (string.IsNullOrWhiteSpace(opts.Output))
+            {
+                opts.Output = opts.Input;
+            }
+
+            if (WotXml.TryEncodeXml(opts.Input, out var decodedXml))
             {
                 File.WriteAllText(opts.Output, decodedXml);
                 return 0;
