@@ -43,6 +43,7 @@ namespace WotTools
                 return TryDecodeXml(filepath, fileStream, out decodedXml, verbose, rootName);
             }
         }
+
         public static bool TryEncodeXml(string filepath, out string encodedXml, bool verbose = true, string rootName = null)
         {
             encodedXml = "";
